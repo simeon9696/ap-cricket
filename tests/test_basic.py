@@ -23,6 +23,14 @@ def test_check_numpy():
     VERSION_OK = NP_VERSION >= NP_VERSION_REC and True or False
     assert VERSION_OK == True, f"Incorrect numpy version. {NP_VERSION} is installed but {NP_VERSION_REC} is required"
 
+def test_check_progress():
+    '''Package Check :: Progress :: Should have Progress version >= 1.5'''
+    import progress
+    PGS_VERSION = float(progress.__version__[:3])
+    PGS_VERSION_REC = 1.5
+    VERSION_OK = PGS_VERSION >= PGS_VERSION_REC and True or False
+    assert VERSION_OK == True, f"Incorrect numpy version. {PGS_VERSION} is installed but {PGS_VERSION_REC} is required"
+
 def test_check_matplotlib():
     '''Package Check :: Matplotlib :: Should have Matplotlib version >= 3.0'''
     import matplotlib as plt
