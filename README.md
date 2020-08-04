@@ -7,13 +7,15 @@
 ## Getting Started
 This project is built with Python v3.8.3 and uses the following dependancies. Please install Python v3.6 or greater and the pacakages below before attempting to run any of the code in this respository
 - OpenCV  
-    `pip install opencv-python`
+    `pip install opencv-python`  
 - Numpy  
-    `pip install numpy`
+    `pip install numpy`  
 - Matplotlib  
-    `pip install matplotlib `
+    `pip install matplotlib`  
+- Progress  
+    `pip install progress`  
 - Pytest-Mocha  
-    `pip install pytest-mocha`
+    `pip install pytest-mocha`  
 
 ## Usage
 From the root directory of the project ```python main.py```
