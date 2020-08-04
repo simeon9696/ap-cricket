@@ -17,5 +17,5 @@ From the root directory of the project:
 
 ## Testing Command
 From the tests directory  
-```pytest --mocha```
+```pytest --mocha```  
 This will run all tests in the tests folder. Follow the naming convention when creating tests i.e. ```test_<your_name_here>```. This allows the test runner to automatically detect test files and run them 
