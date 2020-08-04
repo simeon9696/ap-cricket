@@ -1,6 +1,6 @@
 # ap-cricket
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
-[![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com)
 
 ## Getting Started
 This project is built with Python v3.8.3 and uses the following dependancies. Please install Python v3.6 or greater and the pacakages below before attempting to run any of the code in this respository
