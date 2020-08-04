@@ -1,5 +1,6 @@
 # ap-cricket
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+![with-coffee](https://img.shields.io/badge/made%20with-%E2%98%95%EF%B8%8F%20coffee-yellow.svg)
 ## Getting Started
 This project is built with Python v3.8.3 and uses the following dependancies. Please install Python v3.6 or greater and the pacakages below before attempting to run any of the code in this respository
 - OpenCV  
