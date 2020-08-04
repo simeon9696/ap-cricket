@@ -12,10 +12,8 @@ This project is built with Python v3.8.3 and uses the following dependancies. Pl
     `pip install pytest-mocha`
 
 ## Usage
-From the root directory of the project: 
-```python main.py```
+From the root directory of the project ```python main.py```
 
 ## Testing Command
-From the tests directory  
-```pytest --mocha```  
+From the tests directory  ```pytest --mocha```  
 This will run all tests in the tests folder. Follow the naming convention when creating tests i.e. ```test_<your_name_here>```. This allows the test runner to automatically detect test files and run them 
