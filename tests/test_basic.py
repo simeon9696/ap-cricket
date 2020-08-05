@@ -1,8 +1,8 @@
 def test_check_python_version():
-    '''Package Check :: Python version :: Should have Python version >= 3.6'''
+    '''Package Check :: Python version :: Should have Python version >= 3.8'''
     import sys
     PYTHON_VERSION = float(sys.version[:3])
-    PYTHON_VERSION_REC = 3.6
+    PYTHON_VERSION_REC = 3.8
     VERSION_OK = PYTHON_VERSION >= PYTHON_VERSION_REC and True or False
     assert VERSION_OK == True, f"Incorrect Python version. Version {PYTHON_VERSION} is installed but {PYTHON_VERSION_REC} is required"
     

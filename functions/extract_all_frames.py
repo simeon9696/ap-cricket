@@ -33,7 +33,7 @@ try:
         os.mkdir(processed_dir)
     else:
         # Otherwise delete the folder and all of it's contents
-        print("[INFO] Deleting contents in images folder...")
+        print("[INFO] Clearing old images folder")
         shutil.rmtree(processed_dir)
         # Then re-create an empty folder
         os.mkdir(processed_dir)
@@ -54,14 +54,14 @@ try:
                 ret, frame = cap.read()
                 if ret == False:
                     break
-                cv.imwrite((os.path.join(processed_dir,f'Image-{i}.jpg')),frame)
+                cv.imwrite((os.path.join(processed_dir,f'image-{i}.jpg')),frame)
                 
                 i+=1
                 bar.next()
             cap.release()
             cv.destroyAllWindows()   
             
-        bar.finish()
+        # bar.finish()
 
     print(f"[INFO] Successfully split {len(paths)} videos into {total_frames} images in {processed_dir}")
 

@@ -5,7 +5,7 @@
 
 
 ## Getting Started
-This project is built with Python v3.8.3 and uses the following dependancies. Please install Python v3.6 or greater and the pacakages below before attempting to run any of the code in this respository
+This project is built with Python v3.8.3 and uses the following dependancies. Please install the pacakages below before attempting to run any of the code in this respository.
 - OpenCV  
     `pip install opencv-python`  
 - Numpy  
