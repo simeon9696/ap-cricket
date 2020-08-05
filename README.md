@@ -17,7 +17,7 @@ This project is built with Python v3.8.3 and uses the following dependancies. Pl
 - Pytest-Mocha  
     `pip install pytest-mocha`  
 
-## Usage
+## Usage - Not available yet, individual scripts have to be run
 From the root directory of the project ```python main.py```
 
 ## Testing Command
