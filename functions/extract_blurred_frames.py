@@ -21,7 +21,7 @@ def create_dirs():
         # Then re-create an empty folder
         os.mkdir(blurry)
         os.mkdir(non_blurry)
-
+    return blurry, non_blurry
 
 def variance_of_laplacian(image):
 	# compute the Laplacian of the image and then return the focus
@@ -30,13 +30,17 @@ def variance_of_laplacian(image):
 
 
 
-create_dirs()
+blurry_path, non_blurry_path = create_dirs()
 path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'images'))
+
 image_paths = [os.path.join(path, fn) for fn in next(os.walk(path))[2]]
 
-THRESHOLD = 600
+print(blurry_path)
+print(non_blurry_path)
+THRESHOLD = 200
+NUMBER_OF_IMAGES = len(image_paths)
 # loop over the input images
-with ChargingBar(f'[INFO] Separating into blurry and non-blurry with a threshold of {THRESHOLD}', max=len(image_paths)) as bar:
+with ChargingBar(f'[INFO] Separating {NUMBER_OF_IMAGES} images into blurry and non-blurry with a threshold of {THRESHOLD}', max=NUMBER_OF_IMAGES) as bar:
     for imagePath in image_paths:
         # load the image, convert it to grayscale, and compute the
         # focus measure of the image using the Variance of Laplacian
@@ -44,17 +48,22 @@ with ChargingBar(f'[INFO] Separating into blurry and non-blurry with a threshold
         image = cv.imread(imagePath)
         gray = cv.cvtColor(image, cv.COLOR_BGR2GRAY)
         fm = variance_of_laplacian(gray)
-        text = "Not Blurry"
+        
         
         # if the focus measure is less than the supplied threshold,
         # then the image should be considered "blurry"
         if fm < THRESHOLD:
             text = "Blurry"
+            shutil.copy2(imagePath, blurry_path)
+        else:
+            text = "Not Blurry"
+            shutil.copy2(imagePath, non_blurry_path)
         bar.next()
-"""        # show the image
-    
+
+        """       
+        # Uncomment this block if you want to see the image and fm value    
         cv.putText(image, "{}: {:.2f}".format(text, fm), (10, 30),
             cv.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 3)
         cv.imshow("Image", image)
-        key = cv.waitKey(0)"""
-        
+        key = cv.waitKey(0)
+        """
