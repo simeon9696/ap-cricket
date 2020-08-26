@@ -1,20 +1,19 @@
 from detecto import core, utils, visualize
 import matplotlib.pyplot as plt
-from detecto.utils import read_image
-
 import os
 
-IMAGE_PATH = os.path.join('C:/Users/julis/Documents/ap-cricket/functions/images')
-LABEL_PATH = os.path.join('C:/Users/julis/Documents/ap-cricket/functions/labels')
+IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), 'images'))
+LABEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), 'labels'))
 
-'''
-image = read_image(os.path.join(IMAGE_PATH, 'image0.jpg'))
+
+'''image = utils.read_image(os.path.join(IMAGE_PATH, 'image0.jpg'))
 plt.imshow(image)
-plt.show()
-'''
+plt.show()'''
+
+
 
 # Images and XML files in separate folders
-dataset = core.Dataset(r"C:/Users/julis/Documents/ap-cricket/functions/labels/", r"C:/Users/julis/Documents/ap-cricket/functions/images/")
+dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
 
 image, target = dataset[0]
 print(image, target)
@@ -25,7 +24,7 @@ model.fit(dataset)
 
 
 # Specify the path to your image
-image = utils.read_image('C:/Users/julis/Documents/ap-cricket/functions/images/image0.jpg')
+image = utils.read_image(os.path.join(IMAGE_PATH, 'image0.jpg'))
 predictions = model.predict(image)
 
 # predictions format: (labels, boxes, scores)

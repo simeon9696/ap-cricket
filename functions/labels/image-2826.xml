@@ -1,0 +1,26 @@
+<annotation>
+	<folder>blurry</folder>
+	<filename>image-2826.jpg</filename>
+	<path>C:\Users\julis\Documents\ap-cricket\images\blurry\image-2826.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>bat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>466</xmin>
+			<ymin>441</ymin>
+			<xmax>491</xmax>
+			<ymax>533</ymax>
+		</bndbox>
+	</object>
+</annotation>
