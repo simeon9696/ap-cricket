@@ -135,16 +135,6 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     TRAINING_TIME = (TIME_END-TIME_START).total_seconds() / 60
     print(f"[INFO] Training finised at {TIME_END.strftime('%H:%M:%S')} and took {TRAINING_TIME} minutes")
 
-    # Specify the path to your image
-    image = utils.read_image(os.path.join(IMAGE_PATH, 'image-3361.jpg'))
-    predictions = model.predict(image)
-
-    # predictions format: (labels, boxes, scores)
-    labels, boxes, scores = predictions
-
-    print(labels) 
-    print(boxes)
-    print(scores)
 
     # Model generated successfully, save to disk 
     
