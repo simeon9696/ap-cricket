@@ -88,6 +88,13 @@ def save_model(MODEL_PATH, MODEL):
     MODEL.save(os.path.join(MODEL_PATH, 'model_weights.pth'))
     return
     
+def save_class_names(MODEL_PATH,model):
+    CLASS_NAME_PATH = os.path.join(MODEL_PATH, 'class_names.txt')
+    print(f"\x1b[6;37;44m[INFO] Writing class names to {CLASS_NAME_PATH} \x1b[0m")
+    
+    class_name_file = open(CLASS_NAME_PATH,"w") 
+    class_name_file.write(', '.join(CLASS_NAMES))
+    return
 '''
 # This shows an image from your training set. 
 # Use to validate that paths are correct
@@ -98,9 +105,9 @@ plt.show()
 
 IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training', 'images'))
 LABEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training', 'labels'))
-
+MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model'))
 PATHS_GOOD = COUNT_EQUAL = ALL_FILES_PAIRED = False
-
+CLASS_NAMES = ['bat', 'batter', 'pitch', 'field', 'player', 'scoreboard', 'stumps']
 
 
 PATHS_GOOD = check_dirs(IMAGE_PATH,LABEL_PATH)
@@ -113,10 +120,12 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     print(f"\x1b[6;37;44m[INFO] All file checks passed, beginning dataset loading !\x1b[0m")
     # Images and XML files in separate folders
     dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
+    model = core.Model(CLASS_NAMES)
 
-    
-    
-    model = core.Model(['bat', 'batter', 'pitch', 'field', 'player', 'scoreboard', 'stumps'])
+    save_class_names(MODEL_PATH, model)
+
+
+    '''
     TIME_START = datetime.now()
     print(f"\x1b[6;37;44m[INFO] Training started at {TIME_START.strftime('%H:%M:%S')}\x1b[0m")
     model.fit(dataset, verbose =True)
@@ -137,5 +146,6 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     print(scores)
 
     # Model generated successfully, save to disk 
-    MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model'))
+    
     save_model(MODEL_PATH, model)
+    '''
