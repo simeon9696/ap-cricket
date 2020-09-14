@@ -90,7 +90,7 @@ ALL_FILES_PAIRED = identify_non_paired_file(IMAGE_PATH,LABEL_PATH)
 if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED: 
     
 
-    print(f"\x1b[0;30;44m[INFO] All file checks passed, beginning dataset loading !\x1b[0m")
+    print(f"\x1b[6;37;44m[INFO] All file checks passed, beginning dataset loading !\x1b[0m")
     # Images and XML files in separate folders
     dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
 
@@ -135,4 +135,3 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     
     print(f"\x1b[6;37;44m[INFO] Saving model in {MODEL_PATH}\x1b[0m")
     model.save(os.path.join(MODEL_PATH, 'model_weights.pth'))
-    
