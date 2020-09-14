@@ -122,10 +122,10 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
     model = core.Model(CLASS_NAMES)
 
-    save_class_names(MODEL_PATH, model)
+    
 
 
-    '''
+ 
     TIME_START = datetime.now()
     print(f"\x1b[6;37;44m[INFO] Training started at {TIME_START.strftime('%H:%M:%S')}\x1b[0m")
     model.fit(dataset, verbose =True)
@@ -148,4 +148,4 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     # Model generated successfully, save to disk 
     
     save_model(MODEL_PATH, model)
-    '''
+    save_class_names(MODEL_PATH, model)
