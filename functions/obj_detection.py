@@ -8,4 +8,4 @@ CLASS_NAMES_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..
 CLASS_NAMES =  open(CLASS_NAMES_PATH, "r").readline().split(',')
 
 # Use the saved model to detect objects in images
-# model = core.Model.load(MODEL_PATH, CLASS_NAMES)
+model = core.Model.load(MODEL_PATH, CLASS_NAMES)
