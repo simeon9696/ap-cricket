@@ -67,6 +67,26 @@ def identify_non_paired_file(IMAGE_PATH, LABEL_PATH):
         print(NON_PARIED_FILES)
 
     return ALL_FILES_PAIRED
+
+def save_model(MODEL_PATH, MODEL):
+    if not os.path.exists(MODEL_PATH):
+        # If it doesn't exist make it
+        os.mkdir(MODEL_PATH)
+
+        print(f"\x1b[6;37;44m[INFO] Creating directory to save model in {MODEL_PATH}\x1b[0m")
+    else:
+        # Otherwise delete the folder and all of it's contents
+        print(f"\x1b[6;37;44m[INFO] Removing {MODEL_PATH} \x1b[0m")
+        shutil.rmtree(MODEL_PATH)
+        # Then re-create an empty folder
+        
+        print(f"\x1b[6;37;44m[INFO] Creating directory to save model in {MODEL_PATH}\x1b[0m")
+        os.mkdir(MODEL_PATH)
+
+    
+    print(f"\x1b[6;37;44m[INFO] Saving model in {MODEL_PATH}\x1b[0m")
+    MODEL.save(os.path.join(MODEL_PATH, 'model_weights.pth'))
+    return
     
 '''
 # This shows an image from your training set. 
@@ -118,20 +138,4 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
 
     # Model generated successfully, save to disk 
     MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model'))
-    if not os.path.exists(MODEL_PATH):
-        # If it doesn't exist make it
-        os.mkdir(MODEL_PATH)
-
-        print(f"\x1b[6;37;44m[INFO] Creating directory to save model in {MODEL_PATH}\x1b[0m")
-    else:
-        # Otherwise delete the folder and all of it's contents
-        print(f"\x1b[6;37;44m[INFO] Removing {MODEL_PATH} \x1b[0m")
-        shutil.rmtree(MODEL_PATH)
-        # Then re-create an empty folder
-        
-        print(f"\x1b[6;37;44m[INFO] Creating directory to save model in {MODEL_PATH}\x1b[0m")
-        os.mkdir(MODEL_PATH)
-
-    
-    print(f"\x1b[6;37;44m[INFO] Saving model in {MODEL_PATH}\x1b[0m")
-    model.save(os.path.join(MODEL_PATH, 'model_weights.pth'))
+    save_model(MODEL_PATH, model)
