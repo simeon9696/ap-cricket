@@ -6,24 +6,23 @@ IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), 'images')
 LABEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), 'labels'))
 
 
-'''image = utils.read_image(os.path.join(IMAGE_PATH, 'image0.jpg'))
+'''
+# This shows an image from your training set. 
+# Use to validate that paths are correct
+image = utils.read_image(os.path.join(IMAGE_PATH, 'image0.jpg'))
 plt.imshow(image)
-plt.show()'''
+plt.show()
+'''
 
 
 
 # Images and XML files in separate folders
 dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
-index = 0
-for i in dataset:
-    index = index + 1
-    image,target = i
-    print(index)
-    print(image,target)
 
+# These object classes must be all the classes that are present in your labels
 model = core.Model(['bat', 'batter', 'pitch', 'field', 'player', 'scoreboard', 'stumps'])
 
-model.fit(dataset)
+model.fit(dataset, verbose = True)
 
 
 # Specify the path to your image
