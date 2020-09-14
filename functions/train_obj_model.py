@@ -96,6 +96,9 @@ def save_class_names(MODEL_PATH,model):
     class_name_file = open(CLASS_NAME_PATH,"w") 
     class_name_file.write(', '.join(CLASS_NAMES))
     return
+
+def zip_model_and_class_names(MODEL_PATH):
+    shutil.make_archive('model_data', 'zip', MODEL_PATH)
 '''
 # This shows an image from your training set. 
 # Use to validate that paths are correct
@@ -117,16 +120,13 @@ ALL_FILES_PAIRED = identify_non_paired_file(IMAGE_PATH,LABEL_PATH)
 
 if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED: 
     
-
+    
     print(f"[INFO] All file checks passed, beginning dataset loading !")
     # Images and XML files in separate folders
     dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
     model = core.Model(CLASS_NAMES)
 
-    
 
-
- 
     TIME_START = datetime.now()
     print(f"[INFO] Training started at {TIME_START.strftime('%H:%M:%S')}")
     model.fit(dataset, verbose =True)
@@ -140,3 +140,4 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     
     save_model(MODEL_PATH, model)
     save_class_names(MODEL_PATH, model)
+    zip_model_and_class_names(MODEL_PATH)

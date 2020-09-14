@@ -2,6 +2,7 @@ from detecto import core, utils, visualize
 import matplotlib.pyplot as plt
 import os
 
+
 # Directory at which the model is stored
 MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model','model_weights.pth'))
 IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training', 'images'))
