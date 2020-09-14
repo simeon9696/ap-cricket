@@ -69,28 +69,29 @@ def identify_non_paired_file(IMAGE_PATH, LABEL_PATH):
     return ALL_FILES_PAIRED
 
 def save_model(MODEL_PATH, MODEL):
+    print(f"\x1b[6;37;42m[SUCCESS] Model trained successfully!\x1b[0m")
     if not os.path.exists(MODEL_PATH):
         # If it doesn't exist make it
         os.mkdir(MODEL_PATH)
 
-        print(f"\x1b[6;37;44m[INFO] Creating directory to save model in {MODEL_PATH}\x1b[0m")
+        print(f"[INFO] Creating directory to save model in {MODEL_PATH}")
     else:
         # Otherwise delete the folder and all of it's contents
-        print(f"\x1b[6;37;44m[INFO] Removing {MODEL_PATH} \x1b[0m")
+        print(f"[INFO] Removing {MODEL_PATH}")
         shutil.rmtree(MODEL_PATH)
         # Then re-create an empty folder
         
-        print(f"\x1b[6;37;44m[INFO] Creating directory to save model in {MODEL_PATH}\x1b[0m")
+        print(f"[INFO] Creating directory to save model in {MODEL_PATH}")
         os.mkdir(MODEL_PATH)
 
     
-    print(f"\x1b[6;37;44m[INFO] Saving model in {MODEL_PATH}\x1b[0m")
+    print(f"[INFO] Saving model in {MODEL_PATH}")
     MODEL.save(os.path.join(MODEL_PATH, 'model_weights.pth'))
     return
     
 def save_class_names(MODEL_PATH,model):
     CLASS_NAME_PATH = os.path.join(MODEL_PATH, 'class_names.txt')
-    print(f"\x1b[6;37;44m[INFO] Writing class names to {CLASS_NAME_PATH} \x1b[0m")
+    print(f"[INFO] Writing class names to {CLASS_NAME_PATH}")
     
     class_name_file = open(CLASS_NAME_PATH,"w") 
     class_name_file.write(', '.join(CLASS_NAMES))
@@ -117,7 +118,7 @@ ALL_FILES_PAIRED = identify_non_paired_file(IMAGE_PATH,LABEL_PATH)
 if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED: 
     
 
-    print(f"\x1b[6;37;44m[INFO] All file checks passed, beginning dataset loading !\x1b[0m")
+    print(f"[INFO] All file checks passed, beginning dataset loading !")
     # Images and XML files in separate folders
     dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
     model = core.Model(CLASS_NAMES)
@@ -127,12 +128,12 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
 
  
     TIME_START = datetime.now()
-    print(f"\x1b[6;37;44m[INFO] Training started at {TIME_START.strftime('%H:%M:%S')}\x1b[0m")
+    print(f"[INFO] Training started at {TIME_START.strftime('%H:%M:%S')}")
     model.fit(dataset, verbose =True)
 
     TIME_END = datetime.now()
     TRAINING_TIME = (TIME_END-TIME_START).total_seconds() / 60
-    print(f"\x1b[6;37;44m[INFO] Training finised at {TIME_END.strftime('%H:%M:%S')} and took {TRAINING_TIME} minutes\x1b[0m")
+    print(f"[INFO] Training finised at {TIME_END.strftime('%H:%M:%S')} and took {TRAINING_TIME} minutes")
 
     # Specify the path to your image
     image = utils.read_image(os.path.join(IMAGE_PATH, 'image-3361.jpg'))
