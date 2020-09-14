@@ -55,7 +55,7 @@ with ChargingBar(f'[INFO] Separating {NUMBER_OF_IMAGES} images into blurry and n
             shutil.copy2(imagePath, blurry_path)
         else:
             text = "Not Blurry"
-            # Copy image to bob_blurry folder
+            # Copy image to non_blurry folder
             shutil.copy2(imagePath, non_blurry_path)
 
         # Advance progress bar
