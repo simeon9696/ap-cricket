@@ -18,10 +18,10 @@ def check_dirs(IMAGE_PATH, LABEL_PATH):
             raise Exception (MESSAGE)
         else:
             PATHS_GOOD = True
-            print(f"\x1b[6;30;42m[SUCCESS] Training images and labels found !\x1b[0m")
+            print(f"\x1b[6;37;42m[SUCCESS] Training images and labels found !\x1b[0m")
     except Exception as error:
         PATHS_GOOD = False
-        print(f"\x1b[0;30;41m[ERROR] {error}\x1b[0m")
+        print(f"\x1b[6;37;41m[ERROR] {error}\x1b[0m")
     
     
     return PATHS_GOOD
@@ -37,10 +37,10 @@ def file_count(IMAGE_PATH,LABEL_PATH):
             
             raise Exception(MESSAGE)
         else:
-            print(f"\x1b[6;30;42m[SUCCESS] Equal number of image and label files !\x1b[0m")
+            print(f"\x1b[6;37;42m[SUCCESS] Equal number of image and label files !\x1b[0m")
             COUNT_EQUAL = True
     except Exception as error:
-        print(f"\x1b[0;30;41m[ERROR] {error}\x1b[0m")
+        print(f"\x1b[6;37;41m[ERROR] {error}\x1b[0m")
 
 
     return  COUNT_EQUAL
@@ -59,7 +59,7 @@ def identify_non_paired_file(IMAGE_PATH, LABEL_PATH):
 
     if not NON_PARIED_FILES:
         ALL_FILES_PAIRED = True
-        print(f"\x1b[6;30;42m[SUCCESS] All image files have a corresponding label file !\x1b[0m")
+        print(f"\x1b[6;37;42m[SUCCESS] All image files have a corresponding label file !\x1b[0m")
     else:
         print("[INFO] These file names don't exist as a pair i.e they do not have a corresponding label file for the image file or vice versa")
         print(NON_PARIED_FILES)
