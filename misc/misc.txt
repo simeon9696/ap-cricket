@@ -1,0 +1,24 @@
+from detecto import core, utils, visualize
+import matplotlib.pyplot as plt
+import os
+
+IMAGE_PATH = os.path.abspath(os.path.join(os.getcwd(), 'images'))
+LABEL_PATH = os.path.abspath(os.path.join(os.getcwd(), 'labels'))
+
+
+# Images and XML files in separate folders
+dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
+
+for i in range(len(dataset)):
+    try:
+        print(i)
+        image, target = dataset[i]
+        print(image.shape)
+    except:
+        print('Error with {}'.format(i))
+
+
+# dataset._csv.iloc[80, :] # this is the broken dataset item
+# !ls images | grep image-143
+# !grep -s "image-1433" labels/*
+# !cat labels/image-1256.xml
