@@ -4,6 +4,8 @@ import os
 from datetime import datetime
 import time
 
+import shutil
+
 def check_dirs(IMAGE_PATH, LABEL_PATH):
     # Create blurry and non-blurry image paths if they don't exist. Otherwise delete them
     PATHS_GOOD = False
@@ -96,12 +98,12 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     
     model = core.Model(['bat', 'batter', 'pitch', 'field', 'player', 'scoreboard', 'stumps'])
     TIME_START = datetime.now()
-    print(f"\x1b[0;30;44m[INFO] Training started at {TIME_START.strftime('%H:%M:%S')}\x1b[0m")
+    print(f"\x1b[6;37;44m[INFO] Training started at {TIME_START.strftime('%H:%M:%S')}\x1b[0m")
     model.fit(dataset, verbose =True)
 
     TIME_END = datetime.now()
     TRAINING_TIME = (TIME_END-TIME_START).total_seconds() / 60
-    print(f"\x1b[0;30;44m[INFO] Training finised at {TIME_END.strftime('%H:%M:%S')} and took {TRAINING_TIME} minutes\x1b[0m")
+    print(f"\x1b[6;37;44m[INFO] Training finised at {TIME_END.strftime('%H:%M:%S')} and took {TRAINING_TIME} minutes\x1b[0m")
 
     # Specify the path to your image
     image = utils.read_image(os.path.join(IMAGE_PATH, 'image-3361.jpg'))
@@ -114,4 +116,23 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     print(boxes)
     print(scores)
 
+    # Model generated successfully, save to disk 
+    MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model'))
+    if not os.path.exists(MODEL_PATH):
+        # If it doesn't exist make it
+        os.mkdir(MODEL_PATH)
 
+        print(f"\x1b[6;37;44m[INFO] Creating directory to save model in {MODEL_PATH}\x1b[0m")
+    else:
+        # Otherwise delete the folder and all of it's contents
+        print(f"\x1b[6;37;44m[INFO] Removing {MODEL_PATH} \x1b[0m")
+        shutil.rmtree(MODEL_PATH)
+        # Then re-create an empty folder
+        
+        print(f"\x1b[6;37;44m[INFO] Creating directory to save model in {MODEL_PATH}\x1b[0m")
+        os.mkdir(MODEL_PATH)
+
+    
+    print(f"\x1b[6;37;44m[INFO] Saving model in {MODEL_PATH}\x1b[0m")
+    model.save(os.path.join(MODEL_PATH, 'model_weights.pth'))
+    
