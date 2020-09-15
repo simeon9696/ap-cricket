@@ -151,7 +151,7 @@ if ALL_CHECKS_GOOD:
     model = core.Model(CLASS_NAMES)
     TIME_START = datetime.now()
     print(f"[INFO] Training started at {TIME_START.strftime('%H:%M:%S')}")
-    losses = model.fit(dataset, val_dataset, epochs=3, verbose=True)
+    losses = model.fit(dataset, val_dataset, epochs=20, verbose=True)
     print(losses)
     plt.plot(losses)
     plt.show()
