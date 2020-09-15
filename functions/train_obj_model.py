@@ -128,7 +128,7 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED:
     dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
     
     # Validation dataset
-    val_dataset = core.Dataset(VAL_IMAGE_PATH, VAL_LABEL_PATH)
+    val_dataset = core.Dataset(VAL_LABEL_PATH, VAL_IMAGE_PATH)
 
     model = core.Model(CLASS_NAMES)
     TIME_START = datetime.now()

@@ -5,7 +5,7 @@ import os
 
 # Directory at which the model is stored
 MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model','model_weights.pth'))
-IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'validation'))
+IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'validation','images'))
 CLASS_NAMES_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model','class_names.txt'))
 CLASS_NAMES =  open(CLASS_NAMES_PATH, "r").readline().split(',')
 
@@ -13,7 +13,7 @@ CLASS_NAMES =  open(CLASS_NAMES_PATH, "r").readline().split(',')
 model = core.Model.load(MODEL_PATH, CLASS_NAMES)
 
 # Specify the path to your image
-image = utils.read_image(os.path.join(IMAGE_PATH, 'image-3361.jpg'))
+image = utils.read_image(os.path.join(IMAGE_PATH, 'image-178.jpg'))
 predictions = model.predict(image)
 
 # predictions format: (labels, boxes, scores)
