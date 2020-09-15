@@ -33,8 +33,13 @@ blurry_path, non_blurry_path = create_dirs()
 path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'images'))
 image_paths = [os.path.join(path, fn) for fn in next(os.walk(path))[2]]
 
+#####################################################################
+# CHANGE THRESHOLD BELOW TO CONTROL 'BLURRINESS'                    #
+# INCREASING IT MEANS IMAGES HAVE TO BE MORE CRISP OR SHARPER       #
+#####################################################################
 
 THRESHOLD = 200
+
 NUMBER_OF_IMAGES = len(image_paths)
 # loop over the input images
 with ChargingBar(f'[INFO] Separating {NUMBER_OF_IMAGES} images into blurry and non-blurry with a threshold of {THRESHOLD}', max=NUMBER_OF_IMAGES) as bar:
