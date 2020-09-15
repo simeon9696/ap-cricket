@@ -130,3 +130,6 @@ dmypy.json
 
 # Generated images
 /images
+
+# Model data
+/model
