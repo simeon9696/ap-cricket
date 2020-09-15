@@ -1,0 +1,26 @@
+<annotation>
+	<folder>non_blurry</folder>
+	<filename>image-704.jpg</filename>
+	<path>C:\Users\julis\OneDrive\Desktop\non_blurry\image-704.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1280</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>bat</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>402</xmin>
+			<ymin>430</ymin>
+			<xmax>423</xmax>
+			<ymax>519</ymax>
+		</bndbox>
+	</object>
+</annotation>

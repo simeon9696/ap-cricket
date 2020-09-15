@@ -5,7 +5,7 @@ import os
 
 # Directory at which the model is stored
 MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model','model_weights.pth'))
-IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training', 'images'))
+IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'validation'))
 CLASS_NAMES_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model','class_names.txt'))
 CLASS_NAMES =  open(CLASS_NAMES_PATH, "r").readline().split(',')
 
@@ -22,3 +22,4 @@ labels, boxes, scores = predictions
 print(labels) 
 print(boxes)
 print(scores)
+visualize.show_labeled_image(image, boxes, labels)
