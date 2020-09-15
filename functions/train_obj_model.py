@@ -97,8 +97,18 @@ def save_class_names(MODEL_PATH,model):
     class_name_file.write(', '.join(CLASS_NAMES))
     return
 
-def zip_model_and_class_names(MODEL_PATH):
+def save_losses(MODEL_PATH, losses):
+    LOSSES_PATH = os.path.join(MODEL_PATH, 'losses.txt')
+    print(f"[INFO] Writing loss data to {LOSSES_PATH}")
+    
+    loss_file = open(CLASS_NAME_PATH,"w") 
+    loss_file.write(losses)
+    return
+
+def zip_model_and_loss_and_class_names(MODEL_PATH):
     shutil.make_archive('model_data', 'zip', MODEL_PATH)
+    return
+
 '''
 # This shows an image from your training set. 
 # Use to validate that paths are correct
@@ -153,4 +163,5 @@ if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED and VAL_PATHS_GOOD and VAL_CO
     
     save_model(MODEL_PATH, model)
     save_class_names(MODEL_PATH, model)
-    zip_model_and_class_names(MODEL_PATH)
+    save_losses(MODEL_PATH, losses)
+    zip_model_and_loss_and_class_names(MODEL_PATH)
