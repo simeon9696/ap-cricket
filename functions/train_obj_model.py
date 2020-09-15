@@ -7,7 +7,7 @@ import time
 import shutil
 
 def check_dirs(IMAGE_PATH, LABEL_PATH):
-    # Create blurry and non-blurry image paths if they don't exist. Otherwise delete them
+    # check to see if paths passed in exist or not
     PATHS_GOOD = False
 
     try:
