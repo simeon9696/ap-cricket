@@ -20,7 +20,7 @@ def check_dirs(IMAGE_PATH, LABEL_PATH):
             raise Exception (MESSAGE)
         else:
             PATHS_GOOD = True
-            print(f"\x1b[6;37;42m[SUCCESS] Training images and labels found !\x1b[0m")
+            print(f"\x1b[6;37;42m[SUCCESS] Images and labels found !\x1b[0m")
     except Exception as error:
         PATHS_GOOD = False
         print(f"\x1b[6;37;41m[ERROR] {error}\x1b[0m")
@@ -112,15 +112,21 @@ LABEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'tr
 VAL_IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'validation', 'images'))
 VAL_LABEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'validation', 'labels'))
 MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model'))
-PATHS_GOOD = COUNT_EQUAL = ALL_FILES_PAIRED = False
+PATHS_GOOD = COUNT_EQUAL = ALL_FILES_PAIRED = VAL_PATHS_GOOD = VAL_COUNT_EQUAL = VAL_ALL_FILES_PAIRED = False
 CLASS_NAMES = ['bat','stumps']
 
 
+print(f"[INFO] Checking testing dataset")
 PATHS_GOOD = check_dirs(IMAGE_PATH,LABEL_PATH)
 COUNT_EQUAL = file_count(IMAGE_PATH,LABEL_PATH)
 ALL_FILES_PAIRED = identify_non_paired_file(IMAGE_PATH,LABEL_PATH)
 
-if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED: 
+print(f"[INFO] Checking validation dataset")
+VAL_PATHS_GOOD = check_dirs(VAL_IMAGE_PATH, VAL_LABEL_PATH)
+VAL_COUNT_EQUAL = file_count(VAL_IMAGE_PATH, VAL_LABEL_PATH)
+VAL_ALL_FILES_PAIRED = identify_non_paired_file(VAL_IMAGE_PATH, VAL_LABEL_PATH)
+
+if PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED and VAL_PATHS_GOOD and VAL_COUNT_EQUAL and VAL_ALL_FILES_PAIRED:
     
     
     print(f"[INFO] All file checks passed, beginning dataset loading !")
