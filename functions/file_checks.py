@@ -19,7 +19,7 @@ def check_dirs(IMAGE_PATH, LABEL_PATH):
             raise Exception (MESSAGE)
         else:
             PATHS_GOOD = True
-            print(f"[SUCCESS] Images and labels found !")
+            print(f"[SUCCESS] Images and labels found")
     except Exception as error:
         PATHS_GOOD = False
         print(f"\x1b[6;37;41m[ERROR] {error}\x1b[0m")
@@ -41,7 +41,7 @@ def file_count(IMAGE_PATH,LABEL_PATH):
             
             raise Exception(MESSAGE)
         else:
-            print(f"[SUCCESS] Equal number of image and label files !")
+            print(f"[SUCCESS] Equal number of image and label files")
             COUNT_EQUAL = True
     except Exception as error:
         print(f"\x1b[6;37;41m[ERROR] {error}\x1b[0m")
@@ -64,7 +64,7 @@ def identify_non_paired_file(IMAGE_PATH, LABEL_PATH):
 
     if not NON_PARIED_FILES:
         ALL_FILES_PAIRED = True
-        print(f"[SUCCESS] All image files have a corresponding label file !")
+        print(f"[SUCCESS] All image files have a corresponding label file")
     else:
         print("[INFO] These file names don't exist as a pair i.e they do not have a corresponding label file for the image file or vice versa")
         print(NON_PARIED_FILES)
@@ -115,7 +115,7 @@ def save_class_names(MODEL_PATH, CLASS_NAMES):
 def save_losses(MODEL_PATH, losses):
     LOSSES_PATH = os.path.join(MODEL_PATH, 'losses.txt')
 
-    loss_file = open(CLASS_NAME_PATH,"w") 
+    loss_file = open(LOSSES_PATH,"w") 
     loss_file.write(str(losses))
     print(f"[INFO] Loss data written to to {LOSSES_PATH}")
     return

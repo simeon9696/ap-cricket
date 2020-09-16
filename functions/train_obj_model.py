@@ -63,7 +63,7 @@ if all(ALL_CLEAR):
 
     # Start training with defined parameters
     # verbose= true prints the current epoch and loss after each epoch
-    losses = model.fit(dataset, val_dataset, epochs=15,
+    losses = model.fit(dataset, val_dataset, epochs=1,
                 learning_rate=0.001, verbose=True)
 
 
