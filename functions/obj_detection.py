@@ -12,7 +12,7 @@ CLASS_NAMES =  open(CLASS_NAMES_PATH, "r").readline().split(',')
 model = core.Model.load(MODEL_PATH, CLASS_NAMES)
 
 # Specify the path to your image
-image = utils.read_image(os.path.join(IMAGE_PATH, 'image-1.jpg'))
+image = utils.read_image(os.path.join(IMAGE_PATH, 'image-1.jpg')) //CHANGE IMAGE NAME HERE
 predictions = model.predict(image)
 
 # predictions format: (labels, boxes, scores)

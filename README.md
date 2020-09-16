@@ -17,18 +17,33 @@ This project is built with Python v3.8.3 and uses the following dependancies. Pl
 - Progress  
     `pip install progress`  
 - Pytest-Mocha  
-    `pip install pytest-mocha`  
+    `pip install pytest-mocha`
+- PyTorch
+    `torch==1.4.0 torchvision==0.5.0`
+- Detecto
+    `pip install detecto`
 
-## Usage
+## Extracting frames from video
 
 - Place videos in the `videos` folder
 - Run `extract_all_frames.py`
 - Run `extract_blurred_frames.py`
 - Results will be in the `images` folder
 
-### Not available yet, individual scripts have to be run
+## Training object detection model
 
-From the root directory of the project `python main.py`
+- Label images using labelImg
+- Put images for training dataset into training/images
+- Put labels for training dataset into training/labels
+- Put images for validation dataset into validation/images
+- Put labels for validation dataset into validation/labels
+- Run `train_obj_model.py`
+
+## Using the model
+
+- Put testing images into testing/
+- Change filename so that it corresponds to image name in `obj_detection.py`
+- Run `obj_detection.py`
 
 ## Testing Command
 
