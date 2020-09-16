@@ -54,23 +54,35 @@ if all(ALL_CLEAR):
     # Validation dataset
     val_dataset = core.Dataset(VAL_LABEL_PATH, VAL_IMAGE_PATH)
 
+    # Give model all class names that are present in labels
     model = core.Model(CLASS_NAMES)
+
+    # Log time training began
     TIME_START = datetime.now()
     print(f"[INFO] Training started at {TIME_START.strftime('%H:%M:%S')}")
+
+    # Start training with defined parameters
+    # verbose= true prints the current epoch and loss after each epoch
     losses = model.fit(dataset, val_dataset, epochs=15,
                 learning_rate=0.001, verbose=True)
 
-    plt.plot(losses)
-    plt.show()
+
+
+    # Log time training complet
     TIME_END = datetime.now()
     TRAINING_TIME = (TIME_END-TIME_START).total_seconds() / 60
     print(f"[INFO] Training finised at {TIME_END.strftime('%H:%M:%S')} and took {TRAINING_TIME} minutes")
 
+    # Plot the losses vs epoch after training has completed
+    # Note this blocks the thread. If you don't want to see the plot comment 
+    # the two lines below out
+    # plt.plot(losses)
+    # plt.show()
 
     # Model generated successfully, save to disk 
     print(f"[SUCCESS] Model trained successfully!")
     save_model(MODEL_PATH, model)
-    save_class_names(MODEL_PATH, model)
+    save_class_names(MODEL_PATH, CLASS_NAMES)
     save_losses(MODEL_PATH, losses)
     zip_model_and_loss_and_class_names(MODEL_PATH)
 else:
