@@ -1,9 +1,4 @@
-from detecto import core, utils, visualize
-import matplotlib.pyplot as plt
 import os
-from datetime import datetime
-import time
-
 import shutil
 
 
@@ -12,7 +7,6 @@ def check_dirs(IMAGE_PATH, LABEL_PATH):
     PATHS_GOOD = False
 
     try:
-        
         if not os.path.exists(IMAGE_PATH):
             MESSAGE = f"{IMAGE_PATH} not found"
             raise Exception (MESSAGE)
@@ -21,12 +15,10 @@ def check_dirs(IMAGE_PATH, LABEL_PATH):
             raise Exception (MESSAGE)
         else:
             PATHS_GOOD = True
-            print(f"\x1b[6;37;42m[SUCCESS] Images and labels found !\x1b[0m")
+            print(f"[SUCCESS] Images and labels found !")
     except Exception as error:
         PATHS_GOOD = False
         print(f"\x1b[6;37;41m[ERROR] {error}\x1b[0m")
-    
-    
     return PATHS_GOOD
 
 def file_count(IMAGE_PATH,LABEL_PATH):
@@ -40,12 +32,10 @@ def file_count(IMAGE_PATH,LABEL_PATH):
             
             raise Exception(MESSAGE)
         else:
-            print(f"\x1b[6;37;42m[SUCCESS] Equal number of image and label files !\x1b[0m")
+            print(f"[SUCCESS] Equal number of image and label files !")
             COUNT_EQUAL = True
     except Exception as error:
         print(f"\x1b[6;37;41m[ERROR] {error}\x1b[0m")
-
-
     return  COUNT_EQUAL
 
 
@@ -62,7 +52,7 @@ def identify_non_paired_file(IMAGE_PATH, LABEL_PATH):
 
     if not NON_PARIED_FILES:
         ALL_FILES_PAIRED = True
-        print(f"\x1b[6;37;42m[SUCCESS] All image files have a corresponding label file !\x1b[0m")
+        print(f"[SUCCESS] All image files have a corresponding label file !")
     else:
         print("[INFO] These file names don't exist as a pair i.e they do not have a corresponding label file for the image file or vice versa")
         print(NON_PARIED_FILES)
@@ -70,7 +60,7 @@ def identify_non_paired_file(IMAGE_PATH, LABEL_PATH):
     return ALL_FILES_PAIRED
 
 def save_model(MODEL_PATH, MODEL):
-    print(f"\x1b[6;37;42m[SUCCESS] Model trained successfully!\x1b[0m")
+    
     if not os.path.exists(MODEL_PATH):
         # If it doesn't exist make it
         os.mkdir(MODEL_PATH)
@@ -107,5 +97,5 @@ def save_losses(MODEL_PATH, losses):
     return
 
 def zip_model_and_loss_and_class_names(MODEL_PATH):
-    shutil.make_archive('model_data', 'zip', MODEL_PATH)
+    shutil.make_archive('modeldata', 'zip', MODEL_PATH)
     return

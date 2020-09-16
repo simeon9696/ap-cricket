@@ -1,10 +1,9 @@
 from detecto import core, utils, visualize
 import matplotlib.pyplot as plt
-import os
 from datetime import datetime
-import time
-
 import shutil
+import time
+import os
 
 import file_checks as fc
 
@@ -22,22 +21,21 @@ LABEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'tr
 VAL_IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'validation', 'images'))
 VAL_LABEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'validation', 'labels'))
 MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model'))
-PATHS_GOOD = COUNT_EQUAL = ALL_FILES_PAIRED = VAL_PATHS_GOOD = VAL_COUNT_EQUAL = VAL_ALL_FILES_PAIRED = ALL_CLEAR False
 CLASS_NAMES = ['bat','stumps']
 
+ALL_CLEAR=[
+    fc.check_dirs(IMAGE_PATH,LABEL_PATH),
+    fc.file_count(IMAGE_PATH,LABEL_PATH),
+    fc.identify_non_paired_file(IMAGE_PATH,LABEL_PATH),
+    fc.check_dirs(VAL_IMAGE_PATH, VAL_LABEL_PATH),
+    fc.file_count(VAL_IMAGE_PATH, VAL_LABEL_PATH),
+    fc.identify_non_paired_file(VAL_IMAGE_PATH, VAL_LABEL_PATH),
+]
 
-print(f"[INFO] Checking testing dataset")
-PATHS_GOOD = fc.check_dirs(IMAGE_PATH,LABEL_PATH)
-COUNT_EQUAL = fc.file_count(IMAGE_PATH,LABEL_PATH)
-ALL_FILES_PAIRED = fc.identify_non_paired_file(IMAGE_PATH,LABEL_PATH)
-
-print(f"[INFO] Checking validation dataset")
-VAL_PATHS_GOOD = fc.check_dirs(VAL_IMAGE_PATH, VAL_LABEL_PATH)
-VAL_COUNT_EQUAL = fc.file_count(VAL_IMAGE_PATH, VAL_LABEL_PATH)
-VAL_ALL_FILES_PAIRED = fc.identify_non_paired_file(VAL_IMAGE_PATH, VAL_LABEL_PATH)
-
-ALL_CLEAR = PATHS_GOOD and COUNT_EQUAL and ALL_FILES_PAIRED and VAL_PATHS_GOOD and VAL_COUNT_EQUAL and VAL_ALL_FILES_PAIRED
-
+if all(ALL_CLEAR):
+    print('YAYA')
+else:
+    print(f"\x1b[6;37;41m[ERROR] File checks failed. There is likely additional logging above\x1b[0m")
 '''
 if ALL_CLEAR:
     
@@ -63,7 +61,7 @@ if ALL_CLEAR:
 
 
     # Model generated successfully, save to disk 
-    
+    print(f"[SUCCESS] Model trained successfully!")
     save_model(MODEL_PATH, model)
     save_class_names(MODEL_PATH, model)
     save_losses(MODEL_PATH, losses)
