@@ -46,12 +46,6 @@ ALL_CLEAR=[
 ]
 
 if all(ALL_CLEAR):
-    print('YAYA')
-else:
-    print(f"\x1b[6;37;41m[ERROR] File checks failed. There is likely additional logging above\x1b[0m")
-'''
-if ALL_CLEAR:
-    
     
     print(f"[INFO] All file checks passed, beginning dataset loading")
     # Images and XML files in separate folders
@@ -79,4 +73,6 @@ if ALL_CLEAR:
     save_class_names(MODEL_PATH, model)
     save_losses(MODEL_PATH, losses)
     zip_model_and_loss_and_class_names(MODEL_PATH)
-'''
+else:
+    print(f"\x1b[6;37;41m[ERROR] File checks failed. There is likely additional logging above\x1b[0m")
+
