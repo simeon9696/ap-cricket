@@ -18,9 +18,9 @@ This project is built with Python v3.8.3 and uses the following dependancies. Pl
     `pip install progress`  
 - Pytest-Mocha  
     `pip install pytest-mocha`
-- PyTorch
+- PyTorch  
     `torch==1.4.0 torchvision==0.5.0`
-- Detecto
+- Detecto  
     `pip install detecto`
 
 ## Extracting frames from video
