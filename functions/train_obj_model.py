@@ -81,10 +81,10 @@ if all(ALL_CLEAR):
 
     # Model generated successfully, save to disk 
     print(f"[SUCCESS] Model trained successfully!")
-    save_model(MODEL_PATH, model)
-    save_class_names(MODEL_PATH, CLASS_NAMES)
-    save_losses(MODEL_PATH, losses)
-    zip_model_and_loss_and_class_names(MODEL_PATH)
+    fc.save_model(MODEL_PATH, model)
+    fc.save_class_names(MODEL_PATH, CLASS_NAMES)
+    fc.save_losses(MODEL_PATH, losses)
+    fc.zip_model_and_loss_and_class_names(MODEL_PATH)
 else:
     print(f"\x1b[6;37;41m[ERROR] File checks failed. There is likely additional logging above\x1b[0m")
 
