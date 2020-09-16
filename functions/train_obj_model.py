@@ -15,13 +15,26 @@ image = utils.read_image(os.path.join(IMAGE_PATH, 'image0.jpg')) # image0.jpg is
 plt.imshow(image)
 plt.show()
 '''
-
+# The path to training images
 IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training', 'images'))
+
+# The path to training LABELS
 LABEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'training', 'labels'))
+
+# The path to validation images
 VAL_IMAGE_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'validation', 'images'))
+
+# The path to validation LABELS
 VAL_LABEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'validation', 'labels'))
+
+# The path you want the model, loss information and class names to be stored
 MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'model'))
+
+# All the class names that are present in the labels
 CLASS_NAMES = ['bat','stumps']
+
+
+
 
 ALL_CLEAR=[
     fc.check_dirs(IMAGE_PATH,LABEL_PATH),
@@ -40,7 +53,7 @@ else:
 if ALL_CLEAR:
     
     
-    print(f"[INFO] All file checks passed, beginning dataset loading !")
+    print(f"[INFO] All file checks passed, beginning dataset loading")
     # Images and XML files in separate folders
     dataset = core.Dataset(LABEL_PATH, IMAGE_PATH)
     

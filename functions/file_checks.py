@@ -1,9 +1,13 @@
 import os
 import shutil
 
-
+#########################################################
+# Determine if paths for images and labels for training #
+# and validation datasets are valid. Throw exception if #
+# they are not and return False for unsuccessful status #
+#########################################################
 def check_dirs(IMAGE_PATH, LABEL_PATH):
-    # check to see if paths passed in exist or not
+
     PATHS_GOOD = False
 
     try:
@@ -21,6 +25,11 @@ def check_dirs(IMAGE_PATH, LABEL_PATH):
         print(f"\x1b[6;37;41m[ERROR] {error}\x1b[0m")
     return PATHS_GOOD
 
+
+#########################################################
+# Count the number of images and labels.If they don't   #
+# match, throw an error                                 #
+#########################################################
 def file_count(IMAGE_PATH,LABEL_PATH):
 
     IMAGES_COUNT =  len(next(os.walk(IMAGE_PATH))[2])
@@ -38,7 +47,10 @@ def file_count(IMAGE_PATH,LABEL_PATH):
         print(f"\x1b[6;37;41m[ERROR] {error}\x1b[0m")
     return  COUNT_EQUAL
 
-
+#########################################################
+# Determine if each filename in images/ has a matching  #
+# filename in labels/                                   #
+#########################################################
 def identify_non_paired_file(IMAGE_PATH, LABEL_PATH):
     IMAGE_NAMES =   next(os.walk(IMAGE_PATH))[2]
     LABEL_NAMES =   next(os.walk(LABEL_PATH))[2]
@@ -59,12 +71,17 @@ def identify_non_paired_file(IMAGE_PATH, LABEL_PATH):
 
     return ALL_FILES_PAIRED
 
+
+#########################################################
+# Save the trained model weights as .pth in the         #
+# directory specified                                   #
+#########################################################
 def save_model(MODEL_PATH, MODEL):
-    
+    MODEL_NAME = 'model_weights.pth'
+
     if not os.path.exists(MODEL_PATH):
         # If it doesn't exist make it
         os.mkdir(MODEL_PATH)
-
         print(f"[INFO] Creating directory to save model in {MODEL_PATH}")
     else:
         # Otherwise delete the folder and all of it's contents
@@ -75,27 +92,38 @@ def save_model(MODEL_PATH, MODEL):
         print(f"[INFO] Creating directory to save model in {MODEL_PATH}")
         os.mkdir(MODEL_PATH)
 
-    
-    print(f"[INFO] Saving model in {MODEL_PATH}")
     MODEL.save(os.path.join(MODEL_PATH, 'model_weights.pth'))
+    print(f"[INFO] Saved model '{MODEL_NAME }' in {MODEL_PATH}")
     return
     
-def save_class_names(MODEL_PATH,model):
+#########################################################
+# Save the user supplied class names in the directory   #
+# specified                                             #
+#########################################################
+def save_class_names(MODEL_PATH, CLASS_NAMES):
     CLASS_NAME_PATH = os.path.join(MODEL_PATH, 'class_names.txt')
-    print(f"[INFO] Writing class names to {CLASS_NAME_PATH}")
-    
+
     class_name_file = open(CLASS_NAME_PATH,"w") 
     class_name_file.write(', '.join(CLASS_NAMES))
+    print(f"[INFO] Class names written to {CLASS_NAME_PATH}")
     return
 
+#########################################################
+# Convert the list of losses to string and write to file#
+# in directory supplied                                 #
+#########################################################
 def save_losses(MODEL_PATH, losses):
     LOSSES_PATH = os.path.join(MODEL_PATH, 'losses.txt')
-    print(f"[INFO] Writing loss data to {LOSSES_PATH}")
-    
+
     loss_file = open(CLASS_NAME_PATH,"w") 
-    loss_file.write(losses)
+    loss_file.write(str(losses))
+    print(f"[INFO] Loss data written to to {LOSSES_PATH}")
     return
 
+#########################################################
+# Zip contents of directory supplied and store at in    #
+# current working directory                             #
+#########################################################
 def zip_model_and_loss_and_class_names(MODEL_PATH):
     shutil.make_archive('modeldata', 'zip', MODEL_PATH)
     return
