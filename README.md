@@ -3,6 +3,7 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 This repository is repsonsible for splitting a group of videos into images and then categorizing those images into blurry or not blurry by calculating the variation of the Laplacian.
+It also trains an object detection model using the PyTorch framework Detecto.
 
 ## Getting Started
 
@@ -38,6 +39,7 @@ This project is built with Python v3.8.3 and uses the following dependancies. Pl
 - Put images for validation dataset into validation/images
 - Put labels for validation dataset into validation/labels
 - Run `train_obj_model.py`
+- Model and associated data will be stored in `model/` and zipped at the root.
 
 ## Using the model
 
