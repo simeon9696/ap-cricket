@@ -33,7 +33,7 @@ This project is built with Python v3.8.3 and uses the following dependancies. Pl
 
 ## Training object detection model
 
-- Label images using labelImg
+- Label images using labelImg (Or any equivalent serivce that gives xml labels in PASCAL VOC format)
 - Put images for training dataset into training/images
 - Put labels for training dataset into training/labels
 - Put images for validation dataset into validation/images
