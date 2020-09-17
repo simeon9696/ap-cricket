@@ -73,3 +73,13 @@ Package Check :: test_basic.py
                                          [100%]
 ============================================ 4 passed in 0.42s ============================================
 ```
+
+## Next Steps
+
+- Get metrics like the IoU, Precision and Recall
+- Find way to plot ground truth bounding box together with predicted grounding box
+- Autonomously extract the area inside the predicted grounding box and send to PyTorch 3D for extraction
+
+## Issues
+
+[!_src.empty() in function 'cv::cvtColor'](https://github.com/alankbi/detecto/issues/54)
