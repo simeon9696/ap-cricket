@@ -76,7 +76,7 @@ Package Check :: test_basic.py
 
 ## Next Steps
 
-- Get metrics like the IoU, Precision and Recall
+- Get metrics like the [IoU, Precision and Recall](https://towardsdatascience.com/evaluating-performance-of-an-object-detection-model-137a349c517b)
 - Find way to plot ground truth bounding box together with predicted grounding box
 - Autonomously extract the area inside the predicted grounding box and send to PyTorch 3D for extraction
 
