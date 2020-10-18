@@ -33,7 +33,7 @@ This project is built with Python v3.8.3 and uses the following dependancies. Pl
 
 ## Training object detection model
 
-- Label images using labelImg (Or any equivalent serivce that gives xml labels in PASCAL VOC format)
+- Label images using [labelImg](https://github.com/tzutalin/labelImg) (Or any equivalent serivce that gives xml labels in PASCAL VOC format)
 - Put images for training dataset into `training/images`
 - Put labels for training dataset into `training/labels`
 - Put images for validation dataset into `validation/images`
@@ -44,7 +44,7 @@ This project is built with Python v3.8.3 and uses the following dependancies. Pl
 ## Using the model
 
 - Put testing images into `testing/`
-- Change filename so that it corresponds to image name in `obj_detection.py`
+- Change image filename so that it corresponds to image name used in `obj_detection.py`
 - Run `obj_detection.py`
 
 ## Testing Command
