@@ -83,3 +83,6 @@ Package Check :: test_basic.py
 ## Issues
 
 [!_src.empty() in function 'cv::cvtColor'](https://github.com/alankbi/detecto/issues/54)
+
+## Resources
+[PyTorch models](https://pytorch.org/docs/stable/torchvision/models.html#object-detection-instance-segmentation-and-person-keypoint-detection)
